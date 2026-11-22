@@ -26,7 +26,7 @@ jobs:
       - name: Prepare site files
         run: |
           mkdir _site
-          cp index.html styles.css script.js 1-58.jpg _site/
+          cp index.html logo.png_site/
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
