@@ -1,743 +1,724 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Александр Скобелев — QA-инженер</title>
-    <script type="text/javascript"
-        src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=kunLTgB4wexKcaGMGuMUMvePcpKRdYIXVIf8lvIkrnivi0WiRi8UYdICtomSnloK30xZOxdNMADDDMVUFiO0ONFregfwsyercDT21Rl851KDBE8-uOdkzzU_aDC-n8lJVrHvmM4eQnPbSpMgSmSGFP0w242e9Uj_bB92H7dNFt-KL5iHmBCnItPJCGga6cR--NYMaU8SaOzaqquEmQ4fPPQYhBvnf7dLenUCCSHEvkooqS8mMDcg3SGZJFXTd6IOeq_un5fiITqyJuL67INHm8V9JRdr9E0Bjt9-gTeJYE7WmEb52LN08BnzoDwL2-cq"
-        charset="UTF-8"></script>
-    <link rel="stylesheet" crossorigin="anonymous"
-        href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9jb250cmlidXRpb24udXNlcmNvbnRlbnQuZ29vZ2xlLmNvbS9kb3dubG9hZD9jPUNneGlZWEprWDNOMGIzSmhaMlVTVUJJTmNtVnpjRzl1YzJWZlpHRjBZUm9fQ2pBd04yTXpaVGd4T1dSbVltTmxabVF4TURBd05qWXdaR0l4TjJFek5EWTFZakEwTlRFMk1tSXpZVGN4T0dOa1pEa1NDeElIRUxQZDdPRzlEQmdCJmZpbGVuYW1lPWluZGV4Lmh0bWwmb3BpPTEwMzEzNTA1MA" />
-    <style>
-        :root {
-            --navy: #1B2A4A;
-            --navy-light: #24375E;
-            --blue: #2B6CB0;
-            --blue-soft: #93C5FD;
-            --bg: #F8FAFC;
-            --card: #FFFFFF;
-            --text: #1E293B;
-            --muted: #475569;
-            --border: #E2E8F0;
-            --radius: 14px;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .container {
-            max-width: 1040px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Навигация */
-        header {
-            background: rgba(27, 42, 74, 0.96);
-            backdrop-filter: blur(8px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .nav {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 64px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #fff;
-            font-weight: 700;
-            font-size: 16px;
-        }
-
-        .logo-badge {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            background: var(--blue);
-            display: grid;
-            place-items: center;
-            font-weight: 700;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 24px;
-            font-size: 14px;
-            color: #CBD5E1;
-        }
-
-        .nav-links a:hover {
-            color: #FFFFFF;
-        }
-
-        /* Шапка (Hero) */
-        .hero {
-            background: linear-gradient(135deg, var(--navy) 0%, #0F172A 100%);
-            color: #fff;
-            padding: 64px 0 76px;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 0.6fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(34, 197, 94, 0.14);
-            color: #86EFAC;
-            border: 1px solid rgba(34, 197, 94, 0.35);
-            padding: 6px 14px;
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 500;
-            margin-bottom: 18px;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #4ADE80;
-        }
-
-        .hero h1 {
-            font-size: 38px;
-            line-height: 1.18;
-            margin-bottom: 10px;
-        }
-
-        .hero-role {
-            font-size: 18px;
-            color: var(--blue-soft);
-            font-weight: 600;
-            margin-bottom: 18px;
-        }
-
-        .hero-desc {
-            color: #CBD5E1;
-            font-size: 15.5px;
-            max-width: 610px;
-            margin-bottom: 28px;
-        }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 11px 20px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 14.5px;
-            transition: transform 0.15s ease, background 0.15s ease;
-        }
-
-        .btn:hover {
-            transform: translateY(-1px);
-        }
-
-        .btn-primary {
-            background: var(--blue);
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            background: #2563EB;
-        }
-
-        .btn-outline {
-            background: rgba(255, 255, 255, 0.06);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        .hero-photo-wrap {
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .hero-photo {
-            width: 240px;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 22px;
-            border: 3px solid rgba(147, 197, 253, 0.35);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-            background: var(--navy-light);
-        }
-
-        /* Секции */
-        section {
-            padding: 56px 0;
-        }
-
-        .section-title {
-            font-size: 24px;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-
-        .section-sub {
-            color: var(--muted);
-            font-size: 15px;
-            margin-bottom: 28px;
-        }
-
-        /* Карточки преимуществ */
-        .highlights {
-            margin-top: -38px;
-            padding-top: 0;
-            padding-bottom: 24px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 22px;
-            box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
-        }
-
-        .highlight-card {
-            border-top: 4px solid var(--blue);
-        }
-
-        .card h3 {
-            font-size: 16.5px;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-
-        .card p {
-            font-size: 14px;
-            color: var(--muted);
-        }
-
-        /* Стек */
-        .stack-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 18px;
-        }
-
-        .stack-card-wide {
-            grid-column: span 2;
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .tag {
-            background: #EFF6FF;
-            color: #1E40AF;
-            border: 1px solid #DBEAFE;
-            padding: 5px 11px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        /* Опыт */
-        .exp-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 6px;
-            flex-wrap: wrap;
-        }
-
-        .exp-meta {
-            font-size: 13.5px;
-            color: var(--blue);
-            font-weight: 600;
-        }
-
-        .exp-sub {
-            font-size: 13.5px;
-            color: #64748B;
-            margin-bottom: 16px;
-        }
-
-        .role-block {
-            background: #F8FAFC;
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--blue);
-            border-radius: 10px;
-            padding: 16px 18px;
-            margin-bottom: 14px;
-        }
-
-        .role-block:last-child {
-            margin-bottom: 0;
-        }
-
-        .role-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 10px;
-        }
-
-        .role-title {
-            font-size: 15.5px;
-            font-weight: 700;
-            color: var(--navy);
-        }
-
-        .role-dates {
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--blue);
-        }
-
-        .exp-ul {
-            padding-left: 18px;
-            font-size: 14.3px;
-            color: var(--text);
-        }
-
-        .exp-ul li {
-            margin-bottom: 6px;
-        }
-
-        .exp-ul li:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Сертификаты */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .cert-year {
-            display: inline-block;
-            font-size: 12.5px;
-            font-weight: 700;
-            color: var(--blue);
-            background: #EFF6FF;
-            padding: 3px 10px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-        }
-
-        /* Контакты */
-        .contacts-box {
-            background: var(--navy);
-            color: #fff;
-            border-radius: 18px;
-            padding: 36px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .contacts-box h2 {
-            font-size: 24px;
-            margin-bottom: 6px;
-        }
-
-        .contacts-box p {
-            color: #CBD5E1;
-            font-size: 15px;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 28px 0;
-            color: #64748B;
-            font-size: 13.5px;
-            border-top: 1px solid var(--border);
-        }
-
-        /* Адаптив */
-        @media (max-width: 860px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-photo-wrap {
-                justify-content: center;
-                order: -1;
-            }
-
-            .hero-desc {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hero-actions {
-                justify-content: center;
-            }
-
-            .grid-3,
-            .stack-grid,
-            .cert-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stack-card-wide {
-                grid-column: span 1;
-            }
-
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Александр Скобелев — QA-инженер</title>
+  <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=842OzRZ3YKHYdLElm1mqGH59OG8qIWtXltNYML8y_mmO0O8ocTNoJUZuuHRQapyyXhnEI2XPW1dUVXVwudSfE2Polm4YivR1i5CHbUl2TSQoKwwN_052Urt3A_SZh9FgGxZGb25kLlR6GO55D6tqRd9Ul7oNnrVXLNVuyfnb72YB-JZyKTVrIqigq_8Jow733NPFP-qt54m6kMFfFfw808JEdPP7WuvBToRAHb8PLvjaLfEuQRmH71QJlV-_1fLzn7vo1faIGLRkNrCIiNRO49TTj4PPwSg372OH6b2db1N3UvLW6bVn8VyYJKeN2CTP" charset="UTF-8"></script><style>
+    :root {
+      --navy: #1B2A4A;
+      --navy-light: #24375E;
+      --blue: #2B6CB0;
+      --blue-soft: #93C5FD;
+      --bg: #F8FAFC;
+      --card: #FFFFFF;
+      --text: #1E293B;
+      --muted: #475569;
+      --border: #E2E8F0;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Навигация */
+    header {
+      background: rgba(27, 42, 74, 0.96);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--blue);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+      color: #CBD5E1;
+    }
+
+    .nav-links a:hover {
+      color: #FFFFFF;
+    }
+
+    /* Шапка (Hero) */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #0F172A 100%);
+      color: #fff;
+      padding: 64px 0 76px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.6fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 197, 94, 0.14);
+      color: #86EFAC;
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 18px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ADE80;
+    }
+
+    .hero h1 {
+      font-size: 38px;
+      line-height: 1.18;
+      margin-bottom: 10px;
+    }
+
+    .hero-role {
+      font-size: 18px;
+      color: var(--blue-soft);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .hero-desc {
+      color: #CBD5E1;
+      font-size: 15.5px;
+      max-width: 610px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 14.5px;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #2563EB;
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .hero-photo-wrap {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .hero-photo {
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 22px;
+      border: 3px solid rgba(147, 197, 253, 0.35);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      background: var(--navy-light);
+    }
+
+    /* Секции */
+    section {
+      padding: 56px 0;
+    }
+
+    .section-title {
+      font-size: 24px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    /* Карточки преимуществ */
+    .highlights {
+      margin-top: -38px;
+      padding-top: 0;
+      padding-bottom: 24px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    }
+
+    .highlight-card {
+      border-top: 4px solid var(--blue);
+    }
+
+    .card h3 {
+      font-size: 16.5px;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* Стек */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .stack-card-wide {
+      grid-column: span 2;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      background: #EFF6FF;
+      color: #1E40AF;
+      border: 1px solid #DBEAFE;
+      padding: 5px 11px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    /* Опыт */
+    .exp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .exp-meta {
+      font-size: 13.5px;
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .exp-sub {
+      font-size: 13.5px;
+      color: #64748B;
+      margin-bottom: 16px;
+    }
+
+    .role-block {
+      background: #F8FAFC;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--blue);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 14px;
+    }
+
+    .role-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .role-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .role-title {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .role-dates {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--blue);
+    }
+
+    .exp-ul {
+      padding-left: 18px;
+      font-size: 14.3px;
+      color: var(--text);
+    }
+
+    .exp-ul li {
+      margin-bottom: 6px;
+    }
+
+    .exp-ul li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Сертификаты */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .cert-year {
+      display: inline-block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--blue);
+      background: #EFF6FF;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    /* О себе */
+    .about-card {
+      background: #F1F5F9;
+      border-left: 4px solid var(--blue);
+      border-radius: 12px;
+      padding: 22px 24px;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    /* Контакты */
+    .contacts-box {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 18px;
+      padding: 36px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contacts-box h2 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .contacts-box p {
+      color: #CBD5E1;
+      font-size: 15px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 0;
+      color: #64748B;
+      font-size: 13.5px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Адаптив */
+    @media (max-width: 860px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-photo-wrap {
+        justify-content: center;
+        order: -1;
+      }
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .grid-3, .stack-grid, .cert-grid {
+        grid-template-columns: 1fr;
+      }
+      .stack-card-wide {
+        grid-column: span 1;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <header>
-        <div class="container nav">
-            <a href="#top" class="logo">
-                <span class="logo-badge">АС</span>
-                <span>Александр Скобелев</span>
-            </a>
-            <nav class="nav-links">
-                <a href="#skills">Навыки</a>
-                <a href="#experience">Опыт</a>
-                <a href="#education">Образование</a>
-                <a href="#contacts">Контакты</a>
-            </nav>
+  <header>
+    <div class="container nav">
+      <a href="#top" class="logo">
+        <span class="logo-badge">АС</span>
+        <span>Александр Скобелев</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#skills">Навыки</a>
+        <a href="#experience">Опыт</a>
+        <a href="#education">Образование</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            Открыт к предложениям (удалённо / гибрид / офис)
+          </div>
+          <h1>Александр Скобелев</h1>
+          <div class="hero-role">QA-инженер • Manual • REST / SOAP API • Web • Mobile</div>
+          <p class="hero-desc">
+            Тестирую веб-сервисы, мобильные приложения и API более 3 лет. До перехода в QA больше 10 лет
+            отлаживал сложные инженерные системы и разрабатывал программные модули.
+            Ищу ошибки по делу, держу документацию в порядке и пишу понятные баг-репорты.
+          </p>
+          <div class="hero-actions">
+            <a href="https://t.me/alek_skobelev" target="_blank" rel="noopener" class="btn btn-primary">Написать в Telegram</a>
+            <a href="https://github.com/alekskobelev" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+            <a href="mailto:alekskobelev@mail.ru" class="btn btn-outline">alekskobelev@mail.ru</a>
+          </div>
         </div>
-    </header>
-
-    <main id="top">
-        <!-- Hero -->
-        <section class="hero">
-            <div class="container hero-grid">
-                <div>
-                    <div class="status-pill">
-                        <span class="status-dot"></span>
-                        Открыт к предложениям (удалённо / гибрид / офис)
-                    </div>
-                    <h1>Александр Скобелев</h1>
-                    <div class="hero-role">QA-инженер • Manual • REST / SOAP API • Web • Mobile</div>
-                    <p class="hero-desc">
-                        Тестирую веб-сервисы, мобильные приложения и API около 2 лет. Имею более 10 лет инженерного
-                        опыта
-                        в отладке сложных систем и разработке программных модулей. Системно подхожу к поиску дефектов,
-                        навожу порядок в документации и пишу понятные баг-репорты.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="https://t.me/alek_skobelev" target="_blank" rel="noopener"
-                            class="btn btn-primary">Написать в Telegram</a>
-                        <a href="https://github.com/alekskobelev" target="_blank" rel="noopener"
-                            class="btn btn-outline">GitHub</a>
-                        <a href="mailto:alekskobelev@mail.ru" class="btn btn-outline">alekskobelev@mail.ru</a>
-                    </div>
-                </div>
-                <div class="hero-photo-wrap">
-                    <img src="logo.png" alt="Александр Скобелев — QA-инженер" class="hero-photo" />
-                </div>
-            </div>
-        </section>
-
-        <!-- 3 карточки преимуществ -->
-        <section class="highlights">
-            <div class="container grid-3">
-                <div class="card highlight-card">
-                    <h3>Опыт в QA — около 2 лет</h3>
-                    <p>Тестирование внутренних веб-сервисов, клиентского портала и интеграций с CRM: Web, REST/SOAP API,
-                        SQL и логи.</p>
-                </div>
-                <div class="card highlight-card">
-                    <h3>Инженерный фундамент (10+ лет)</h3>
-                    <p>Разработка и отладка программных модулей (постпроцессоров ЧПУ), работа по строгим стандартам и
-                        системный подход.</p>
-                </div>
-                <div class="card highlight-card">
-                    <h3>Инфраструктура и автоматизация</h3>
-                    <p>Самостоятельно разворачиваю окружения в Docker и Linux, читаю серверные логи, пишу простые
-                        автотесты API в Postman (JS).</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Навыки -->
-        <section id="skills">
-            <div class="container">
-                <h2 class="section-title">Ключевые навыки и технический стек</h2>
-                <p class="section-sub">Инструменты, с которыми я работаю на практике</p>
-
-                <div class="stack-grid">
-                    <div class="card">
-                        <h3>Тест-менеджмент и документация</h3>
-                        <div class="tags">
-                            <span class="tag">TestIT / TMS</span>
-                            <span class="tag">Яндекс Трекер</span>
-                            <span class="tag">Miro (Mindmap)</span>
-                            <span class="tag">Figma</span>
-                            <span class="tag">Тест-кейсы и тест-раны</span>
-                            <span class="tag">Техники тест-дизайна</span>
-                            <span class="tag">Анализ требований</span>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3>Виды тестирования</h3>
-                        <div class="tags">
-                            <span class="tag">Функциональное</span>
-                            <span class="tag">Регрессионное</span>
-                            <span class="tag">Smoke</span>
-                            <span class="tag">Кроссбраузерное</span>
-                            <span class="tag">UI и верстка (HTML/CSS)</span>
-                            <span class="tag">Авторизация и сессии</span>
-                            <span class="tag">Mobile (PUSH, диплинки)</span>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3>API и сетевое взаимодействие</h3>
-                        <div class="tags">
-                            <span class="tag">REST API</span>
-                            <span class="tag">SOAP (WSDL)</span>
-                            <span class="tag">WebSocket</span>
-                            <span class="tag">HTTP / HTTPS</span>
-                            <span class="tag">Postman (базовые JS-автотесты)</span>
-                            <span class="tag">Swagger (OpenAPI)</span>
-                            <span class="tag">SoapUI</span>
-                            <span class="tag">WireMock</span>
-                            <span class="tag">JSON / XML</span>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <h3>Отладка, логи и мониторинг</h3>
-                        <div class="tags">
-                            <span class="tag">Chrome DevTools</span>
-                            <span class="tag">Charles Proxy</span>
-                            <span class="tag">Breakpoints / Map Local</span>
-                            <span class="tag">Throttling</span>
-                            <span class="tag">Kibana</span>
-                            <span class="tag">Grafana</span>
-                            <span class="tag">Jaeger</span>
-                            <span class="tag">Яндекс Метрика</span>
-                        </div>
-                    </div>
-
-                    <div class="card stack-card-wide">
-                        <h3>Базы данных и инфраструктура</h3>
-                        <div class="tags">
-                            <span class="tag">SQL (CRUD, JOIN, GROUP BY)</span>
-                            <span class="tag">PostgreSQL (DBeaver)</span>
-                            <span class="tag">Metabase</span>
-                            <span class="tag">MongoDB Compass</span>
-                            <span class="tag">Apache Kafka</span>
-                            <span class="tag">Docker</span>
-                            <span class="tag">Linux Console</span>
-                            <span class="tag">Git / GitHub</span>
-                            <span class="tag">Agile</span>
-                            <span class="tag">GPT-нейросети</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Опыт работы -->
-        <section id="experience">
-            <div class="container">
-                <h2 class="section-title">Опыт работы</h2>
-                <p class="section-sub">Переход в тестирование внутри компании и сильная инженерная база</p>
-
-                <div class="exp-list">
-                    <div class="card">
-                        <div class="exp-header">
-                            <h3>ООО «Делкам-Самара-Д»</h3>
-                            <span class="exp-meta">Март 2022 — настоящее время</span>
-                        </div>
-                        <div class="exp-sub">Инженерное ПО, веб-сервисы, автоматизация и интеграции • Внутренний переход
-                            в QA</div>
-
-                        <div class="role-block">
-                            <div class="role-header">
-                                <span class="role-title">QA-инженер (Manual / REST API / Web / Mobile)</span>
-                                <span class="role-dates">Январь 2025 — настоящее время</span>
-                            </div>
-                            <ul class="exp-ul">
-                                <li>Проводил функциональное, регрессионное, Smoke и кроссбраузерное тестирование
-                                    внутренних веб-сервисов, клиентского портала (B2B/B2C) и интеграций с CRM.</li>
-                                <li>Создавал и поддерживал тестовую документацию с нуля: тест-кейсы и тест-раны в
-                                    TestIT, чек-листы в Miro, баг-репорты в Яндекс Трекере.</li>
-                                <li>Проверял авторизацию, сессии, верстку по макетам в Figma и мобильные сценарии
-                                    (PUSH-уведомления, диплинки).</li>
-                                <li>Тестировал REST API, SOAP (WSDL) и WebSocket через Postman (коллекции, окружения,
-                                    базовые автотесты на JS), Swagger и SoapUI.</li>
-                                <li>Локализовал ошибки через Chrome DevTools, Charles Proxy (Breakpoints, Map Local, Map
-                                    Remote, Throttling) и создавал заглушки в WireMock.</li>
-                                <li>Проверял данные через SQL в PostgreSQL (DBeaver, Metabase), работал с MongoDB,
-                                    Kafka, логами в Kibana, Grafana, Jaeger, Linux и Docker.</li>
-                            </ul>
-                        </div>
-
-                        <div class="role-block">
-                            <div class="role-header">
-                                <span class="role-title">Инженер-программист</span>
-                                <span class="role-dates">Март 2022 — декабрь 2024</span>
-                            </div>
-                            <ul class="exp-ul">
-                                <li>Разрабатывал, отлаживал и тестировал программные модули (постпроцессоры для станков
-                                    с ЧПУ) по строгим техническим требованиям.</li>
-                                <li>Проверял граничные условия, логику генерации управляющего кода и работу модулей на
-                                    сложных сценариях до передачи в эксплуатацию.</li>
-                                <li>Выполнял проектные заказы на разработку и проверку программных модулей, оформлял
-                                    подробную техническую документацию.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="exp-header">
-                            <h3>ООО «ДС-Инжиниринг» — Инженер-технолог-программист 1-й категории</h3>
-                            <span class="exp-meta">Сентябрь 2016 — настоящее время</span>
-                        </div>
-                        <div class="exp-sub">Самара • Промышленный инжиниринг, CAD/CAM/PDM, 3D-сканирование, КИМ</div>
-                        <ul class="exp-ul">
-                            <li>Более 10 лет работы со сложным инженерным ПО (CAD/CAM-комплексы, промышленное
-                                3D-сканирование, координатно-измерительные машины) и отладки сложных систем.</li>
-                            <li>Оформлял техническую документацию по строгим стандартам (ГОСТ/ЕСКД), проводил
-                                технические консультации и инструктажи для заказчиков.</li>
-                            <li>Вне работы самостоятельно администрирую домашнюю серверную инфраструктуру: Linux,
-                                Docker-контейнеры, NAS-сервер и сетевое оборудование.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Образование и сертификаты -->
-        <section id="education">
-            <div class="container">
-                <h2 class="section-title">Образование и сертификаты</h2>
-                <p class="section-sub">Высшее техническое образование и профильная подготовка</p>
-
-                <div class="cert-grid">
-                    <div class="card">
-                        <span class="cert-year">2026</span>
-                        <h3>QA Studio — «Инженер по тестированию»</h3>
-                        <p>Сертификат от 28.10.2026 (139 часов): клиент-серверная архитектура, Web, бэкенд, снифферы,
-                            тест-дизайн, SQL, REST/SOAP, логи.</p>
-                    </div>
-
-                    <div class="card">
-                        <span class="cert-year">Курсы</span>
-                        <h3>GeekBrains — Технические сертификаты</h3>
-                        <p>Успешно пройдены программы: «Git», «Figma», «Основы программирования», «Компьютерная
-                            грамотность».</p>
-                    </div>
-
-                    <div class="card">
-                        <span class="cert-year">2011 • Высшее</span>
-                        <h3>Филиал СамГТУ (г. Сызрань)</h3>
-                        <p>Автоматизация технологических процессов и производств (Компьютерные системы управления в
-                            производстве и бизнесе).</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Контакты -->
-        <section id="contacts">
-            <div class="container">
-                <div class="contacts-box">
-                    <div>
-                        <h2>Давайте обсудим задачи</h2>
-                        <p>На связи в Telegram, по телефону и почте. Готов к собеседованию и тестовому заданию.</p>
-                    </div>
-                    <div class="contact-links">
-                        <a href="https://t.me/alek_skobelev" target="_blank" rel="noopener"
-                            class="btn btn-primary">Telegram: @alek_skobelev</a>
-                        <a href="tel:+79874425705" class="btn btn-outline">+7 (987) 442-57-05</a>
-                        <a href="mailto:alekskobelev@mail.ru" class="btn btn-outline">alekskobelev@mail.ru</a>
-                        <a href="https://github.com/alekskobelev" target="_blank" rel="noopener"
-                            class="btn btn-outline">GitHub</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            © 2026 Александр Скобелев • QA-инженер
+        <div class="hero-photo-wrap">
+          <img src="logo.png" alt="Александр Скобелев — QA-инженер" class="hero-photo" />
         </div>
-    </footer>
+      </div>
+    </section>
+
+    <!-- 3 карточки преимуществ -->
+    <section class="highlights">
+      <div class="container grid-3">
+        <div class="card highlight-card">
+          <h3>Опыт в QA — 3+ года</h3>
+          <p>Тестирование внутренних веб-сервисов, клиентского портала и интеграций с CRM: Web, REST/SOAP API, SQL и логи.</p>
+        </div>
+        <div class="card highlight-card">
+          <h3>Инженерный фундамент (10+ лет)</h3>
+          <p>Разработка и отладка программных модулей (постпроцессоров ЧПУ), работа по строгим стандартам и внимание к деталям.</p>
+        </div>
+        <div class="card highlight-card">
+          <h3>Инфраструктура и автоматизация</h3>
+          <p>Сам разворачиваю окружения в Docker и Linux, читаю серверные логи, пишу простые автотесты API в Postman (JS).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Навыки -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Ключевые навыки и технический стек</h2>
+        <p class="section-sub">Инструменты, с которыми я работаю на практике</p>
+
+        <div class="stack-grid">
+          <div class="card">
+            <h3>Тест-менеджмент и документация</h3>
+            <div class="tags">
+              <span class="tag">TestIT / TMS</span>
+              <span class="tag">Яндекс Трекер</span>
+              <span class="tag">Miro (Mindmap)</span>
+              <span class="tag">Figma</span>
+              <span class="tag">Тест-кейсы и тест-раны</span>
+              <span class="tag">Техники тест-дизайна</span>
+              <span class="tag">Проверка требований</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Виды тестирования</h3>
+            <div class="tags">
+              <span class="tag">Функциональное</span>
+              <span class="tag">Регрессионное</span>
+              <span class="tag">Smoke</span>
+              <span class="tag">Кроссбраузерное</span>
+              <span class="tag">UI и верстка (HTML/CSS)</span>
+              <span class="tag">Авторизация и сессии</span>
+              <span class="tag">Mobile (PUSH, диплинки)</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>API и сетевое взаимодействие</h3>
+            <div class="tags">
+              <span class="tag">REST API</span>
+              <span class="tag">SOAP (WSDL)</span>
+              <span class="tag">WebSocket</span>
+              <span class="tag">HTTP / HTTPS</span>
+              <span class="tag">Postman (базовые JS-автотесты)</span>
+              <span class="tag">Swagger (OpenAPI)</span>
+              <span class="tag">SoapUI</span>
+              <span class="tag">WireMock</span>
+              <span class="tag">JSON / XML</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Отладка, логи и мониторинг</h3>
+            <div class="tags">
+              <span class="tag">Chrome DevTools</span>
+              <span class="tag">Charles Proxy</span>
+              <span class="tag">Breakpoints / Map Local</span>
+              <span class="tag">Throttling</span>
+              <span class="tag">Kibana</span>
+              <span class="tag">Grafana</span>
+              <span class="tag">Jaeger</span>
+              <span class="tag">Яндекс Метрика</span>
+            </div>
+          </div>
+
+          <div class="card stack-card-wide">
+            <h3>Базы данных и инфраструктура</h3>
+            <div class="tags">
+              <span class="tag">SQL (CRUD, JOIN, GROUP BY)</span>
+              <span class="tag">PostgreSQL (DBeaver)</span>
+              <span class="tag">Metabase</span>
+              <span class="tag">MongoDB Compass</span>
+              <span class="tag">Apache Kafka</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Linux Console</span>
+              <span class="tag">Git / GitHub</span>
+              <span class="tag">Agile</span>
+              <span class="tag">GPT-нейросети</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Опыт работы -->
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Опыт работы</h2>
+        <p class="section-sub">Переход в тестирование внутри компании и сильная инженерная база</p>
+
+        <div class="exp-list">
+          <div class="card">
+            <div class="exp-header">
+              <h3>ООО «Делкам-Самара-Д»</h3>
+              <span class="exp-meta">Март 2022 — настоящее время</span>
+            </div>
+            <div class="exp-sub">Инженерное ПО, веб-сервисы, автоматизация и интеграции • Внутренний переход в QA</div>
+
+            <div class="role-block">
+              <div class="role-header">
+                <span class="role-title">QA-инженер (Manual / REST API / Web / Mobile)</span>
+                <span class="role-dates">2023 — настоящее время</span>
+              </div>
+              <ul class="exp-ul">
+                <li>Тестировал внутренние веб-сервисы, клиентский портал (B2B/B2C) и интеграции с CRM: функциональные, регрессионные, Smoke и кроссбраузерные проверки.</li>
+                <li>Вел задачи и баг-репорты в Яндекс Трекере, обсуждал детали с разработчиками и аналитиками на всех этапах разработки — от разбора требований до выпуска обновлений.</li>
+                <li>Вел и обновлял тестовую документацию: подробные тест-кейсы в TestIT для важного функционала и короткие чек-листы в Miro для быстрых проверок.</li>
+                <li>Проверял авторизацию, сессии, верстку по макетам в Figma и мобильные сценарии (PUSH-уведомления, диплинки).</li>
+                <li>Тестировал REST API, SOAP (WSDL) и WebSocket через Postman (коллекции, окружения, базовые автотесты на JS), Swagger и SoapUI.</li>
+                <li>Искал причины ошибок через Chrome DevTools, перехватывал и подменял трафик в Charles Proxy (Breakpoints, Map Local, Map Remote, Throttling), ставил заглушки в WireMock.</li>
+                <li>Проверял данные через SQL в PostgreSQL (DBeaver, Metabase), работал с MongoDB, Kafka, разбирался в логах Kibana, Grafana, Jaeger, Linux и поднимал окружения в Docker.</li>
+              </ul>
+            </div>
+
+            <div class="role-block">
+              <div class="role-header">
+                <span class="role-title">Инженер-программист</span>
+                <span class="role-dates">2022 — 2023</span>
+              </div>
+              <ul class="exp-ul">
+                <li>Разрабатывал, отлаживал и проверял программные модули (постпроцессоры для станков с ЧПУ) по строгим техническим требованиям.</li>
+                <li>Искал ошибки на граничных значениях и сложных сценариях до того, как управляющий код уходил на реальное оборудование.</li>
+                <li>Выполнял проектные заказы на разработку и проверку программных модулей, оформлял подробную техническую документацию.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="exp-header">
+              <h3>ООО «ДС-Инжиниринг» — Инженер-технолог-программист 1-й категории</h3>
+              <span class="exp-meta">Сентябрь 2016 — настоящее время</span>
+            </div>
+            <div class="exp-sub">Самара • Промышленный инжиниринг, CAD/CAM/PDM, 3D-сканирование, КИМ</div>
+            <ul class="exp-ul">
+              <li>Более 10 лет работы со сложным инженерным ПО (CAD/CAM-комплексы, промышленное 3D-сканирование, координатно-измерительные машины) и отладки сложных систем.</li>
+              <li>Оформлял техническую документацию по строгим стандартам (ГОСТ/ЕСКД), проводил технические консультации и инструктажи для заказчиков.</li>
+              <li>Настраивал и поддерживал офисный сервер на Linux, контейнеры Docker, сетевое хранилище (NAS) и локальную сеть.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Образование и сертификаты -->
+    <section id="education">
+      <div class="container">
+        <h2 class="section-title">Образование и сертификаты</h2>
+        <p class="section-sub">Высшее техническое образование и профильная подготовка</p>
+
+        <div class="cert-grid">
+          <div class="card">
+            <span class="cert-year">2026</span>
+            <h3>QA Studio — «Инженер по тестированию»</h3>
+            <p>Сертификат от 28.10.2026 (139 часов): клиент-серверная архитектура, Web, бэкенд, снифферы, тест-дизайн, SQL, REST/SOAP, логи.</p>
+          </div>
+
+          <div class="card">
+            <span class="cert-year">Курсы</span>
+            <h3>GeekBrains — Технические сертификаты</h3>
+            <p>Успешно пройдены программы: «Git», «Figma», «Основы программирования», «Компьютерная грамотность».</p>
+          </div>
+
+          <div class="card">
+            <span class="cert-year">2011 • Высшее</span>
+            <h3>Филиал СамГТУ (г. Сызрань)</h3>
+            <p>Автоматизация технологических процессов и производств (Компьютерные системы управления в производстве и бизнесе).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- О себе -->
+    <section id="about" style="padding-top: 0;">
+      <div class="container">
+        <h2 class="section-title">О себе</h2>
+        <div class="about-card">
+          Нравится разбираться, как устроены сложные системы. Спокойно отношусь к фразе «у меня на компьютере всё работает» — просто приношу логи и скриншоты. В свободное время стою на воротах в мини-футболе, поэтому защищать продукт от багов на последнем рубеже для меня привычное дело. Отдыхаю от экрана за настольными играми с семьей. В работе ценю здравый смысл и нормальный диалог с командой.
+        </div>
+      </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts">
+      <div class="container">
+        <div class="contacts-box">
+          <div>
+            <h2>Давайте обсудим задачи</h2>
+            <p>На связи в Telegram, по телефону и почте. Готов к собеседованию и тестовому заданию.</p>
+          </div>
+          <div class="contact-links">
+            <a href="https://t.me/alek_skobelev" target="_blank" rel="noopener" class="btn btn-primary">Telegram: @alek_skobelev</a>
+            <a href="tel:+79874425705" class="btn btn-outline">+7 (987) 442-57-05</a>
+            <a href="mailto:alekskobelev@mail.ru" class="btn btn-outline">alekskobelev@mail.ru</a>
+            <a href="https://github.com/alekskobelev" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Александр Скобелев • QA-инженер
+    </div>
+  </footer>
 
 </body>
-
 </html>
